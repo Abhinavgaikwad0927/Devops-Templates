@@ -1,0 +1,13 @@
+
+---
+- name: Manage a service account
+  hosts: webservers
+  become: true
+
+  tasks:
+    - name: Ensure automation account exists
+      ansible.builtin.user:
+        name: automation
+        state: present
+        create_home: true
+        shell: /bin/bash

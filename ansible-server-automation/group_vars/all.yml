@@ -1,0 +1,11 @@
+
+---
+project_name: ansible-server-automation
+environment: dev
+
+common_packages:
+  - curl
+  - git
+  - unzip
+
+nginx_service_name: nginx

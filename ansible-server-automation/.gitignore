@@ -1,0 +1,15 @@
+
+# Private keys and credentials
+*.pem
+*.key
+.env
+.env.*
+
+# Ansible generated files
+*.retry
+*.log
+
+# Editor and OS files
+.DS_Store
+.vscode/
+.idea/

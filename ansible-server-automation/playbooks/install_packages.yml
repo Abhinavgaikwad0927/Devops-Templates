@@ -1,0 +1,8 @@
+
+---
+- name: Install common packages
+  hosts: webservers
+  become: true
+
+  roles:
+    - common

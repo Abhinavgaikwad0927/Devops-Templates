@@ -1,0 +1,9 @@
+
+---
+- name: Configure all managed servers
+  hosts: webservers
+  become: true
+
+  roles:
+    - common
+    - nginx
