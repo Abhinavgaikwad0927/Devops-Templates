@@ -1,3 +1,8 @@
-
 ---
 nginx_service_name: nginx
+nginx_config_dir: /etc/nginx/conf.d
+nginx_site_dir: /var/www/ansible-site
+nginx_listen_port: 8080
+nginx_server_name: _
+nginx_page_title: Ansible Managed Server
+nginx_page_message: Deployed using Ansible

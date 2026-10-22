@@ -1,0 +1,22 @@
+---
+- name: Test Ansible locally
+  hosts: local
+  gather_facts: true
+
+  tasks:
+    - name: Display operating system
+      ansible.builtin.debug:
+        msg: "Operating system: {{ ansible_facts['system'] }}"
+
+    - name: Display hostname
+      ansible.builtin.debug:
+        msg: "Hostname: {{ ansible_facts['hostname'] }}"
+
+    - name: Verify Ansible execution
+      ansible.builtin.command: whoami
+      register: current_user
+      changed_when: false
+
+    - name: Display current user
+      ansible.builtin.debug:
+        msg: "Executing user: {{ current_user.stdout }}"

@@ -1,0 +1,25 @@
+
+stages:
+  - validate
+
+variables:
+  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+  ANSIBLE_FORCE_COLOR: "true"
+
+cache:
+  paths:
+    - .cache/pip/
+
+ansible_validate:
+  stage: validate
+  image: python:3.12-slim
+
+  before_script:
+    - python -m pip install --disable-pip-version-check ansible-core ansible-lint yamllint
+
+  script:
+    - yamllint group_vars playbooks roles
+    - ansible-lint playbooks/site.yml
+    - ansible-playbook -i inventory/local.ini --syntax-check playbooks/local_test.yml
+    - ansible-playbook -i inventory/dev.ini --syntax-check playbooks/site.yml
+    - ansible-playbook -i inventory/dev.ini --syntax-check playbooks/configure_nginx.yml

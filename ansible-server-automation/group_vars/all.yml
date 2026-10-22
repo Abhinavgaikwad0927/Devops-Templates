@@ -1,7 +1,6 @@
-
 ---
 project_name: ansible-server-automation
-environment: dev
+deployment_environment: dev
 
 common_packages:
   - curl
@@ -9,3 +8,7 @@ common_packages:
   - unzip
 
 nginx_service_name: nginx
+nginx_listen_port: 8080
+nginx_server_name: _
+nginx_page_title: Development Web Server
+nginx_page_message: Nginx configured automatically using Ansible
