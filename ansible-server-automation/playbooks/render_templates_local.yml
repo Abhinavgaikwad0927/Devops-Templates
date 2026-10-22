@@ -1,0 +1,21 @@
+---
+- name: Render Nginx templates locally without running Nginx
+  hosts: local
+  connection: local
+  gather_facts: false
+
+  vars_files:
+    - ../roles/nginx/defaults/main.yml
+
+  tasks:
+    - name: Render Nginx server configuration
+      ansible.builtin.template:
+        src: ../roles/nginx/templates/nginx.conf.j2
+        dest: /tmp/ansible-nginx.conf
+        mode: "0644"
+
+    - name: Render website homepage
+      ansible.builtin.template:
+        src: ../roles/nginx/templates/index.html.j2
+        dest: /tmp/ansible-nginx-index.html
+        mode: "0644"
